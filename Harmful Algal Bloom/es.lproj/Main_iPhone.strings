@@ -45,7 +45,7 @@
 "qsz-3v-TTC.text" = "Presentar un nuevo informe";
 
 /* Class = "IBUILabel"; text = "Latitude"; ObjectID = "sZD-Wb-GWH"; */
-"sZD-Wb-GWH.text" = "latitud";
+"sZD-Wb-GWH.text" = "Latitud";
 
 /* Class = "IBUILabel"; text = "Blue"; ObjectID = "wou-zb-PYR"; */
 "wou-zb-PYR.text" = "Azul";
