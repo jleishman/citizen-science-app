@@ -23,6 +23,11 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Colo
 
 @end
 
+@interface HABHarmfulAlgalBloomViewController (UIImagePickerControllerSupport) <UINavigationControllerDelegate,
+                                                                                UIImagePickerControllerDelegate>
+
+@end
+
 @implementation HABHarmfulAlgalBloomViewController
 
 - (void)_updateLatitudeLabel {
@@ -37,6 +42,10 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Colo
                                 self.report.longitude];
     
     [self.longitudeLabel setNeedsLayout];
+}
+
+- (void)_updateImageView {
+    self.imageView.image = self.report.image;
 }
 
 - (void)_updateInterface {
@@ -55,6 +64,16 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Colo
     waterColorPickerView.delegate = self;
     
     self.waterColorTextField.inputView = waterColorPickerView;
+    
+    if (self.report.image == nil) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.delegate = self;
+        
+        [self presentViewController:imagePickerController
+                           animated:YES
+                         completion:NULL];
+    }
 }
 
 #pragma mark UITableViewDelegate
@@ -113,6 +132,22 @@ didUpdateUserLocation:(MKUserLocation *)userLocation {
     
     [self _updateLatitudeLabel];
     [self _updateLongitudeLabel];
+}
+
+@end
+
+@implementation HABHarmfulAlgalBloomViewController (UIImagePickerControllerSupport)
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    self.report.image = image;
+    
+    [self _updateImageView];
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:NULL];
 }
 
 @end

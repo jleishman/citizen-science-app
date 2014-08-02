@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *waterColorTextField;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @interface HABHarmfulAlgalBloomViewController (MKMapViewSupport) <MKMapViewDelegate>
