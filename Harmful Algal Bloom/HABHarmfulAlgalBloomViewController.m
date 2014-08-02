@@ -25,12 +25,31 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Colo
 
 @implementation HABHarmfulAlgalBloomViewController
 
+- (void)_updateLatitudeLabel {
+    self.latitudeLabel.text = [NSString stringWithFormat:@"%@",
+                               self.report.latitude];
+    
+    [self.latitudeLabel setNeedsLayout];
+}
+
+- (void)_updateLongitudeLabel {
+    self.longitudeLabel.text = [NSString stringWithFormat:@"%@",
+                                self.report.longitude];
+    
+    [self.longitudeLabel setNeedsLayout];
+}
+
+- (void)_updateInterface {
+    [self _updateLatitudeLabel];
+    [self _updateLongitudeLabel];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.waterColors = [NSArray arrayWithContentsOfURL:[[NSBundle mainBundle] URLForResource:HABHarmfulAlgalBloomWaterColorsName
                                                                                withExtension:@"plist"]];
-
+    
     UIPickerView *waterColorPickerView = [[UIPickerView alloc] init];
     waterColorPickerView.dataSource = self;
     waterColorPickerView.delegate = self;
@@ -81,6 +100,19 @@ numberOfRowsInComponent:(NSInteger)component {
                                                                   @"Localized description of water color.");
     
     return localizedString;
+}
+
+@end
+
+@implementation HABHarmfulAlgalBloomViewController (MKMapViewSupport)
+
+- (void)mapView:(MKMapView *)mapView
+didUpdateUserLocation:(MKUserLocation *)userLocation {
+    self.report.latitude = @(userLocation.location.coordinate.latitude);
+    self.report.longitude = @(userLocation.location.coordinate.longitude);
+    
+    [self _updateLatitudeLabel];
+    [self _updateLongitudeLabel];
 }
 
 @end

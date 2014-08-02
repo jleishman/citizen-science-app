@@ -10,10 +10,20 @@
 
 @interface HABHarmfulAlgalBloomViewController : UITableViewController
 
+@property (strong, nonatomic) CSHarmfulAlgalBloomReport *report;
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *waterColorTableViewCell;
 
+@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *waterColorTextField;
+
+@end
+
+@interface HABHarmfulAlgalBloomViewController (MKMapViewSupport) <MKMapViewDelegate>
 
 @end

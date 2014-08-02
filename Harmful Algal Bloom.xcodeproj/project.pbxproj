@@ -28,6 +28,8 @@
 		D088EAA3198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAA2198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m */; };
 		D088EAA5198D24830089F47B /* Water Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = D088EAA4198D24830089F47B /* Water Colors.plist */; };
 		D088EAA8198D26AA0089F47B /* Water Color Labels.strings in Resources */ = {isa = PBXBuildFile; fileRef = D088EAAA198D26AA0089F47B /* Water Color Labels.strings */; };
+		D088EAB7198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAB6198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m */; };
+		D088EABA198D64D30089F47B /* HABNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAB9198D64D30089F47B /* HABNavigationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,10 @@
 		D088EAB0198D26E70089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D088EAB2198D296F0089F47B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		D088EAB4198D29760089F47B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		D088EAB5198D4DA20089F47B /* CSHarmfulAlgalBloomReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSHarmfulAlgalBloomReport.h; sourceTree = "<group>"; };
+		D088EAB6198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHarmfulAlgalBloomReport.m; sourceTree = "<group>"; };
+		D088EAB8198D64D30089F47B /* HABNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HABNavigationViewController.h; sourceTree = "<group>"; };
+		D088EAB9198D64D30089F47B /* HABNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HABNavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,10 +148,14 @@
 				D088EA70198C76EF0089F47B /* HABAppDelegate.m */,
 				D088EA72198C76EF0089F47B /* Main_iPhone.storyboard */,
 				D088EA75198C76EF0089F47B /* Main_iPad.storyboard */,
+				D088EAB8198D64D30089F47B /* HABNavigationViewController.h */,
+				D088EAB9198D64D30089F47B /* HABNavigationViewController.m */,
 				D088EAA1198C796C0089F47B /* HABHarmfulAlgalBloomViewController.h */,
 				D088EAA2198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m */,
 				D088EA81198C76EF0089F47B /* Images.xcassets */,
 				D088EA78198C76EF0089F47B /* Harmful_Algal_Bloom.xcdatamodeld */,
+				D088EAB5198D4DA20089F47B /* CSHarmfulAlgalBloomReport.h */,
+				D088EAB6198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m */,
 				D088EAA4198D24830089F47B /* Water Colors.plist */,
 				D088EAAA198D26AA0089F47B /* Water Color Labels.strings */,
 				D088EA67198C76EF0089F47B /* Supporting Files */,
@@ -287,6 +297,8 @@
 				D088EA7A198C76EF0089F47B /* Harmful_Algal_Bloom.xcdatamodeld in Sources */,
 				D088EA71198C76EF0089F47B /* HABAppDelegate.m in Sources */,
 				D088EAA3198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m in Sources */,
+				D088EAB7198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m in Sources */,
+				D088EABA198D64D30089F47B /* HABNavigationViewController.m in Sources */,
 				D088EA6D198C76EF0089F47B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

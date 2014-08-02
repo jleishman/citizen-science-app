@@ -15,4 +15,9 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <MapKit/MapKit.h>
+
+    #import "CSHarmfulAlgalBloomReport.h"
+
+    #import "HABNavigationViewController.h"
+    #import "HABHarmfulAlgalBloomViewController.h"
 #endif
