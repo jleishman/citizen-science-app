@@ -40,10 +40,21 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Colo
 
 #pragma mark UITableViewDelegate
 
+- (BOOL)tableView:(UITableView *)tableView
+shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL shouldHighlightRowAtIndexPath = YES;
+    
+    if ([[self.tableView indexPathForCell:self.waterColorTableViewCell] isEqual:indexPath] == YES) {
+        shouldHighlightRowAtIndexPath = NO;
+    }
+    
+    return shouldHighlightRowAtIndexPath;
+}
+
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[self.tableView indexPathForCell:self.waterColorTableViewCell] isEqual:indexPath] == YES) {
-        
+        [self.waterColorTextField becomeFirstResponder];
     }
 }
 
