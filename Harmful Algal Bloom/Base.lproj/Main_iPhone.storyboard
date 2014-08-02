@@ -221,11 +221,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vKD-37-i6y">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vKD-37-i6y">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="vKD-37-i6y" secondAttribute="bottom" id="LA5-7I-TnG"/>
+                                                <constraint firstAttribute="trailing" secondItem="vKD-37-i6y" secondAttribute="trailing" id="Tx2-3M-cxq"/>
+                                                <constraint firstItem="vKD-37-i6y" firstAttribute="leading" secondItem="SIK-1d-k8f" secondAttribute="leading" id="ZBL-KH-mn5"/>
+                                                <constraint firstItem="vKD-37-i6y" firstAttribute="top" secondItem="SIK-1d-k8f" secondAttribute="top" id="fKh-ag-YS4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="228" id="ylT-2J-cPY">
