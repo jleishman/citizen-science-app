@@ -1,0 +1,51 @@
+
+/* Class = "IBUILabel"; text = "Fish"; ObjectID = "1G0-iF-w77"; */
+"1G0-iF-w77.text" = "Pescado";
+
+/* Class = "IBUINavigationItem"; title = "Submit a New Report"; ObjectID = "3eo-ZP-r3g"; */
+"3eo-ZP-r3g.title" = "Presentar un nuevo informe";
+
+/* Class = "IBUILabel"; text = "Longitude"; ObjectID = "56s-Sw-cEX"; */
+"56s-Sw-cEX.text" = "Longitud";
+
+/* Class = "IBUILabel"; text = "Harmful Algal Bloom"; ObjectID = "6yc-ks-4YA"; */
+"6yc-ks-4YA.text" = "La floración de algas nocivas";
+
+/* Class = "IBUILabel"; text = "Edit Profile Information"; ObjectID = "D8e-Yh-DEp"; */
+"D8e-Yh-DEp.text" = "Editar la información del perfil";
+
+/* Class = "IBUILabel"; text = "View Draft Submission"; ObjectID = "Gz4-jw-yAS"; */
+"Gz4-jw-yAS.text" = "Ver Proyecto de Presentación";
+
+/* Class = "IBUILabel"; text = "View Past Submissions"; ObjectID = "HmL-Kh-p0Y"; */
+"HmL-Kh-p0Y.text" = "Ver anteriores presentaciones";
+
+/* Class = "IBUILabel"; text = "Any color in water column?"; ObjectID = "SmG-dp-Ir6"; */
+"SmG-dp-Ir6.text" = "Cualquier cantidad de agua en la columna de agua?";
+
+/* Class = "IBUILabel"; text = "-78.8394"; ObjectID = "TBQ-wL-egr"; */
+"TBQ-wL-egr.text" = "-78.8394";
+
+/* Class = "IBUITextField"; text = "Blue"; ObjectID = "Udr-j8-4jJ"; */
+"Udr-j8-4jJ.text" = "Azul";
+
+/* Class = "IBUILabel"; text = "Color of the water"; ObjectID = "Xte-Q2-szX"; */
+"Xte-Q2-szX.text" = "Color del agua";
+
+/* Class = "IBUINavigationItem"; title = "Harmful Algal Bloom"; ObjectID = "Y67-E2-EuK"; */
+"Y67-E2-EuK.title" = "La floración de algas nocivas";
+
+/* Class = "IBUILabel"; text = "Color of the water"; ObjectID = "g2b-Up-8Sb"; */
+"g2b-Up-8Sb.text" = "Color of the water";
+
+/* Class = "IBUILabel"; text = "37.3848"; ObjectID = "qpZ-Ue-PH8"; */
+"qpZ-Ue-PH8.text" = "37.3848";
+
+/* Class = "IBUILabel"; text = "Submit a New Report"; ObjectID = "qsz-3v-TTC"; */
+"qsz-3v-TTC.text" = "Presentar un nuevo informe";
+
+/* Class = "IBUILabel"; text = "Latitude"; ObjectID = "sZD-Wb-GWH"; */
+"sZD-Wb-GWH.text" = "latitud";
+
+/* Class = "IBUILabel"; text = "Blue"; ObjectID = "wou-zb-PYR"; */
+"wou-zb-PYR.text" = "Azul";
