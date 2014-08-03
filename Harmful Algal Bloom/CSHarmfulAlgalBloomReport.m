@@ -19,6 +19,17 @@
 @dynamic algaeColor;
 @dynamic timestamp;
 
+- (void)awakeFromInsert {
+    [super awakeFromInsert];
+    
+    self.waterColor = @"Blue";
+    self.algaeColor = @"Blue";
+    self.colorInWaterColumn = @(NO);
+    self.timestamp = [NSDate date];
+    self.latitude = @(0);
+    self.longitude = @(0);
+}
+
 - (UIImage *)image {
     UIImage *image = [self primitiveValueForKey:@"image"];
     

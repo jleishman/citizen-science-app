@@ -386,7 +386,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Report" id="3eo-ZP-r3g">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="AuC-Rg-rMH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="AuC-Rg-rMH">
+                            <connections>
+                                <action selector="submit" destination="PMe-0b-pgC" id="z1i-Aw-I3o"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="algaeColorTextField" destination="fZG-Xf-vaj" id="94S-bU-828"/>
