@@ -15,6 +15,7 @@
 @dynamic longitude;
 @dynamic image;
 @dynamic waterColor;
+@dynamic algaeColor;
 @dynamic timestamp;
 
 - (UIImage *)image {

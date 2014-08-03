@@ -203,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="1270" y="813"/>
         </scene>
-        <!--Harmful Algal Bloom View Controller - Submit a New Report-->
+        <!--Harmful Algal Bloom View Controller - New Report-->
         <scene sceneID="uYr-Z5-t2G">
             <objects>
                 <tableViewController id="PMe-0b-pgC" customClass="HABHarmfulAlgalBloomViewController" sceneMemberID="viewController">
@@ -214,28 +214,48 @@
                         <sections>
                             <tableViewSection id="EUg-J3-h7F">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="228" id="J3Z-HU-0fD">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="228"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="J3Z-HU-0fD">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J3Z-HU-0fD" id="SIK-1d-k8f">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vKD-37-i6y">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Algae Bloom" translatesAutoresizingMaskIntoConstraints="NO" id="YEc-mH-buM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="43" id="6ee-GX-GCB"/>
+                                                        <constraint firstAttribute="height" constant="43" id="xt8-pc-PnY"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Algae Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCa-dR-2Il">
+                                                    <rect key="frame" x="51" y="11" width="90" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Red" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZG-Xf-vaj">
+                                                    <rect key="frame" x="266" y="12" width="34" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="vKD-37-i6y" secondAttribute="bottom" id="LA5-7I-TnG"/>
-                                                <constraint firstAttribute="trailing" secondItem="vKD-37-i6y" secondAttribute="trailing" id="Tx2-3M-cxq"/>
-                                                <constraint firstItem="vKD-37-i6y" firstAttribute="leading" secondItem="SIK-1d-k8f" secondAttribute="leading" id="ZBL-KH-mn5"/>
-                                                <constraint firstItem="vKD-37-i6y" firstAttribute="top" secondItem="SIK-1d-k8f" secondAttribute="top" id="fKh-ag-YS4"/>
+                                                <constraint firstItem="YEc-mH-buM" firstAttribute="top" secondItem="SIK-1d-k8f" secondAttribute="top" id="8vN-12-PsE"/>
+                                                <constraint firstItem="YEc-mH-buM" firstAttribute="leading" secondItem="SIK-1d-k8f" secondAttribute="leading" id="Dhq-rO-kk2"/>
+                                                <constraint firstItem="PCa-dR-2Il" firstAttribute="top" secondItem="SIK-1d-k8f" secondAttribute="top" constant="11" id="JOG-Yg-P0k"/>
+                                                <constraint firstItem="PCa-dR-2Il" firstAttribute="leading" secondItem="YEc-mH-buM" secondAttribute="trailing" constant="8" id="WjU-7d-IQ8"/>
+                                                <constraint firstAttribute="centerY" secondItem="fZG-Xf-vaj" secondAttribute="centerY" id="Zs9-cd-fHK"/>
+                                                <constraint firstAttribute="trailing" secondItem="fZG-Xf-vaj" secondAttribute="trailing" constant="20" id="jXI-ap-wNo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="228" id="ylT-2J-cPY">
-                                        <rect key="frame" x="0.0" y="292" width="320" height="228"/>
+                                        <rect key="frame" x="0.0" y="108" width="320" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ylT-2J-cPY" id="9EK-tx-xus">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
@@ -258,7 +278,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iLj-zO-Td7">
-                                        <rect key="frame" x="0.0" y="520" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iLj-zO-Td7" id="4Xz-8z-jjN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -286,7 +306,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3AN-SF-91s">
-                                        <rect key="frame" x="0.0" y="564" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="380" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3AN-SF-91s" id="wEC-u7-x4C">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -313,7 +333,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bnL-Wl-1Td">
-                                        <rect key="frame" x="0.0" y="608" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="424" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bnL-Wl-1Td" id="LdG-TZ-gnZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -334,7 +354,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GFt-IT-IAT">
-                                        <rect key="frame" x="0.0" y="652" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="468" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GFt-IT-IAT" id="cUF-kl-cyx">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -365,9 +385,12 @@
                             <outlet property="delegate" destination="PMe-0b-pgC" id="qRa-OL-hjf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Submit a New Report" id="3eo-ZP-r3g"/>
+                    <navigationItem key="navigationItem" title="New Report" id="3eo-ZP-r3g">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="AuC-Rg-rMH"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="vKD-37-i6y" id="HdL-Ha-jQf"/>
+                        <outlet property="algaeColorTextField" destination="fZG-Xf-vaj" id="94S-bU-828"/>
+                        <outlet property="imageView" destination="YEc-mH-buM" id="8NF-Ig-8Vw"/>
                         <outlet property="latitudeLabel" destination="NXh-uW-Dfu" id="F3r-qB-NFd"/>
                         <outlet property="longitudeLabel" destination="Lfs-MQ-myv" id="3ea-4h-Sl1"/>
                         <outlet property="mapView" destination="ON0-9J-PdW" id="Iky-ye-Chj"/>

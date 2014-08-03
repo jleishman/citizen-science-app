@@ -10,11 +10,17 @@
 
 static NSString * const HABHarmfulAlgalBloomWaterColorsName = @"Water Colors";
 
-static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Color Labels";
+static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 
 @interface HABHarmfulAlgalBloomViewController ()
 
 @property (strong, nonatomic) NSArray *waterColors;
+
+@property (strong, nonatomic) NSArray *algaeColors;
+
+@property (strong, nonatomic) UIPickerView *waterColorPickerView;
+
+@property (strong, nonatomic) UIPickerView *algaeColorPickerView;
 
 @end
 
@@ -59,11 +65,20 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsLabelTable = @"Water Colo
     self.waterColors = [NSArray arrayWithContentsOfURL:[[NSBundle mainBundle] URLForResource:HABHarmfulAlgalBloomWaterColorsName
                                                                                withExtension:@"plist"]];
     
-    UIPickerView *waterColorPickerView = [[UIPickerView alloc] init];
-    waterColorPickerView.dataSource = self;
-    waterColorPickerView.delegate = self;
+    self.algaeColors = [NSArray arrayWithContentsOfURL:[[NSBundle mainBundle] URLForResource:HABHarmfulAlgalBloomAlgaeColorsName
+                                                                               withExtension:@"plist"]];
     
-    self.waterColorTextField.inputView = waterColorPickerView;
+    self.waterColorPickerView = [[UIPickerView alloc] init];
+    self.waterColorPickerView.dataSource = self;
+    self.waterColorPickerView.delegate = self;
+    
+    self.waterColorTextField.inputView = self.waterColorPickerView;
+    
+    self.algaeColorPickerView = [[UIPickerView alloc] init];
+    self.algaeColorPickerView.dataSource = self;
+    self.algaeColorPickerView.delegate = self;
+    
+    self.algaeColorTextField.inputView = self.algaeColorPickerView;
     
     if (self.report.image == nil) {
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
@@ -106,19 +121,50 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component {
-    return self.waterColors.count;
+    NSInteger numberOfRows = 0;
+    
+    if (pickerView == self.waterColorPickerView) {
+        numberOfRows = self.waterColors.count;
+    }
+    else if (pickerView == self.algaeColorPickerView) {
+        numberOfRows = self.algaeColors.count;
+    }
+    
+    return numberOfRows;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-    NSString *localizedString = NSLocalizedStringWithDefaultValue(self.waterColors[row],
-                                                                  HABHarmfulAlgalBloomWaterColorsLabelTable,
-                                                                  [NSBundle mainBundle],
-                                                                  @"Unrecognized Color",
-                                                                  @"Localized description of water color.");
+    NSString *titleForRow = nil;
     
-    return localizedString;
+    if (pickerView == self.waterColorPickerView) {
+        titleForRow = NSLocalizedStringWithDefaultValue(self.waterColors[row],
+                                                        HABHarmfulAlgalBloomWaterColorsName,
+                                                        [NSBundle mainBundle],
+                                                        @"Unrecognized Color",
+                                                        @"Localized description of water color.");
+    }
+    else if (pickerView == self.algaeColorPickerView) {
+        titleForRow = NSLocalizedStringWithDefaultValue(self.algaeColors[row],
+                                                        HABHarmfulAlgalBloomAlgaeColorsName,
+                                                        [NSBundle mainBundle],
+                                                        @"Unrecognized Color",
+                                                        @"Localized description of algae color.");
+    }
+    
+    return titleForRow;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView
+      didSelectRow:(NSInteger)row
+       inComponent:(NSInteger)component {
+    if (pickerView == self.waterColorPickerView) {
+        self.report.waterColor = self.waterColors[row];
+    }
+    else if (pickerView == self.algaeColorPickerView) {
+        self.report.algaeColor = self.algaeColors[row];
+    }
 }
 
 @end

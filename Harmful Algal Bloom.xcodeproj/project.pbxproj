@@ -27,9 +27,11 @@
 		D088EAA0198C78DA0089F47B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA9F198C78DA0089F47B /* MapKit.framework */; };
 		D088EAA3198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAA2198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m */; };
 		D088EAA5198D24830089F47B /* Water Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = D088EAA4198D24830089F47B /* Water Colors.plist */; };
-		D088EAA8198D26AA0089F47B /* Water Color Labels.strings in Resources */ = {isa = PBXBuildFile; fileRef = D088EAAA198D26AA0089F47B /* Water Color Labels.strings */; };
+		D088EAA8198D26AA0089F47B /* Water Colors.strings in Resources */ = {isa = PBXBuildFile; fileRef = D088EAAA198D26AA0089F47B /* Water Colors.strings */; };
 		D088EAB7198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAB6198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m */; };
 		D088EABA198D64D30089F47B /* HABNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAB9198D64D30089F47B /* HABNavigationViewController.m */; };
+		D0D139E5198DB3B900991DA9 /* Algae Colors.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0D139E7198DB3B900991DA9 /* Algae Colors.strings */; };
+		D0D139EB198DB44E00991DA9 /* Algae Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0D139EA198DB44E00991DA9 /* Algae Colors.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,11 +69,11 @@
 		D088EAA1198C796C0089F47B /* HABHarmfulAlgalBloomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HABHarmfulAlgalBloomViewController.h; sourceTree = "<group>"; };
 		D088EAA2198C796C0089F47B /* HABHarmfulAlgalBloomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HABHarmfulAlgalBloomViewController.m; sourceTree = "<group>"; };
 		D088EAA4198D24830089F47B /* Water Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Water Colors.plist"; sourceTree = "<group>"; };
-		D088EAA9198D26AA0089F47B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Base.lproj/Water Color Labels.strings"; sourceTree = "<group>"; };
-		D088EAAB198D26AF0089F47B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Water Color Labels.strings"; sourceTree = "<group>"; };
+		D088EAA9198D26AA0089F47B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Base.lproj/Water Colors.strings"; sourceTree = "<group>"; };
+		D088EAAB198D26AF0089F47B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Water Colors.strings"; sourceTree = "<group>"; };
 		D088EAAC198D26E60089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		D088EAAD198D26E70089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main_iPad.strings; sourceTree = "<group>"; };
-		D088EAAE198D26E70089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Water Color Labels.strings"; sourceTree = "<group>"; };
+		D088EAAE198D26E70089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Water Colors.strings"; sourceTree = "<group>"; };
 		D088EAAF198D26E70089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D088EAB0198D26E70089F47B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D088EAB2198D296F0089F47B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
@@ -80,6 +82,10 @@
 		D088EAB6198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHarmfulAlgalBloomReport.m; sourceTree = "<group>"; };
 		D088EAB8198D64D30089F47B /* HABNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HABNavigationViewController.h; sourceTree = "<group>"; };
 		D088EAB9198D64D30089F47B /* HABNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HABNavigationViewController.m; sourceTree = "<group>"; };
+		D0D139E6198DB3B900991DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Base.lproj/Algae Colors.strings"; sourceTree = "<group>"; };
+		D0D139E8198DB3BE00991DA9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Algae Colors.strings"; sourceTree = "<group>"; };
+		D0D139E9198DB3BF00991DA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Algae Colors.strings"; sourceTree = "<group>"; };
+		D0D139EA198DB44E00991DA9 /* Algae Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Algae Colors.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +163,9 @@
 				D088EAB5198D4DA20089F47B /* CSHarmfulAlgalBloomReport.h */,
 				D088EAB6198D4DA20089F47B /* CSHarmfulAlgalBloomReport.m */,
 				D088EAA4198D24830089F47B /* Water Colors.plist */,
-				D088EAAA198D26AA0089F47B /* Water Color Labels.strings */,
+				D0D139EA198DB44E00991DA9 /* Algae Colors.plist */,
+				D088EAAA198D26AA0089F47B /* Water Colors.strings */,
+				D0D139E7198DB3B900991DA9 /* Algae Colors.strings */,
 				D088EA67198C76EF0089F47B /* Supporting Files */,
 			);
 			path = "Harmful Algal Bloom";
@@ -270,10 +278,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D139EB198DB44E00991DA9 /* Algae Colors.plist in Resources */,
 				D088EA77198C76EF0089F47B /* Main_iPad.storyboard in Resources */,
 				D088EA82198C76EF0089F47B /* Images.xcassets in Resources */,
 				D088EA74198C76EF0089F47B /* Main_iPhone.storyboard in Resources */,
-				D088EAA8198D26AA0089F47B /* Water Color Labels.strings in Resources */,
+				D0D139E5198DB3B900991DA9 /* Algae Colors.strings in Resources */,
+				D088EAA8198D26AA0089F47B /* Water Colors.strings in Resources */,
 				D088EA6B198C76EF0089F47B /* InfoPlist.strings in Resources */,
 				D088EAA5198D24830089F47B /* Water Colors.plist in Resources */,
 			);
@@ -360,14 +370,24 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D088EAAA198D26AA0089F47B /* Water Color Labels.strings */ = {
+		D088EAAA198D26AA0089F47B /* Water Colors.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D088EAA9198D26AA0089F47B /* Base */,
 				D088EAAB198D26AF0089F47B /* en */,
 				D088EAAE198D26E70089F47B /* es */,
 			);
-			name = "Water Color Labels.strings";
+			name = "Water Colors.strings";
+			sourceTree = "<group>";
+		};
+		D0D139E7198DB3B900991DA9 /* Algae Colors.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0D139E6198DB3B900991DA9 /* Base */,
+				D0D139E8198DB3BE00991DA9 /* es */,
+				D0D139E9198DB3BF00991DA9 /* en */,
+			);
+			name = "Algae Colors.strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -530,6 +550,7 @@
 				D088EA9B198C76EF0089F47B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D088EA9C198C76EF0089F47B /* Build configuration list for PBXNativeTarget "Harmful Algal BloomTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +559,7 @@
 				D088EA9E198C76EF0089F47B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

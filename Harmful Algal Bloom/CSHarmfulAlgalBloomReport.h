@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) UIImage * image;
 @property (nonatomic, retain) NSString * waterColor;
+@property (nonatomic, retain) NSString * algaeColor;
 @property (nonatomic, retain) NSDate * timestamp;
 
 @end
