@@ -82,7 +82,9 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
 - (void)submit {
     NSDictionary *dictionary = @{@"water_color" : self.report.waterColor,
                                  @"algae_color" : self.report.algaeColor,
-                                 @"color_in_water_column" : self.report.colorInWaterColumn};
+                                 @"color_in_water_column" : self.report.colorInWaterColumn,
+                                 @"lat" : self.report.latitude,
+                                 @"long" : self.report.longitude};
     
     NSError *error = nil;
     
