@@ -14,6 +14,14 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 
 static NSString * const HABHarmfulAlgalBloomSocrataData = @"Socrata Credentials";
 
+static NSString * const HABSocrataURLKey = @"URL";
+
+static NSString * const HABSocrataUsernameKey = @"Username";
+
+static NSString * const HABSocrataPasswordKey = @"Password";
+
+static NSString * const HABSocrataAppTokenKey = @"App Token";
+
 @interface HABHarmfulAlgalBloomViewController ()
 
 @property (strong, nonatomic) NSArray *waterColors;
