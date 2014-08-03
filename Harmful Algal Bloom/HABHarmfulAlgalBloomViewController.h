@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
+- (IBAction)submit;
+
 @end
 
 @interface HABHarmfulAlgalBloomViewController (MKMapViewSupport) <MKMapViewDelegate>

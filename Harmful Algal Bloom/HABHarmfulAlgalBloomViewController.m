@@ -12,6 +12,8 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsName = @"Water Colors";
 
 static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 
+static NSString * const HABHarmfulAlgalBloomSocrataData = @"Socrata Credentials";
+
 @interface HABHarmfulAlgalBloomViewController ()
 
 @property (strong, nonatomic) NSArray *waterColors;
@@ -57,6 +59,22 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 - (void)_updateInterface {
     [self _updateLatitudeLabel];
     [self _updateLongitudeLabel];
+}
+
+- (void)submit {
+    NSDictionary *dictionary = @{@"water_color" : self.report.waterColor,
+                                 @"algae_color" : self.report.algaeColor,
+                                 @"color_in_water_column" : self.report.colorInWaterColumn};
+    
+    NSError *error = nil;
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                   options:0
+                                                     error:&error];
+    
+    
+    
+    NSURLRequest *urlRequest = [NSURLRequest alloc] initWithURL:
 }
 
 - (void)viewDidLoad {

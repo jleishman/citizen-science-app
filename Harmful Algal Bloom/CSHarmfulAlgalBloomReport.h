@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * colorInWaterColumn;
 @property (nonatomic, retain) UIImage * image;
 @property (nonatomic, retain) NSString * waterColor;
 @property (nonatomic, retain) NSString * algaeColor;

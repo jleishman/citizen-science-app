@@ -13,6 +13,7 @@
 
 @dynamic latitude;
 @dynamic longitude;
+@dynamic colorInWaterColumn;
 @dynamic image;
 @dynamic waterColor;
 @dynamic algaeColor;
