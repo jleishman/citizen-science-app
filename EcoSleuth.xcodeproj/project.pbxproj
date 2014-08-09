@@ -61,7 +61,7 @@
 		D088EA76198C76EF0089F47B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D088EA79198C76EF0089F47B /* EcoSleuth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EcoSleuth.xcdatamodel; sourceTree = "<group>"; };
 		D088EA81198C76EF0089F47B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D088EA87198C76EF0089F47B /* Harmful Algal BloomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Harmful Algal BloomTests.xctest"; path = EcoSleuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D088EA87198C76EF0089F47B /* EcoSleuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EcoSleuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D088EA88198C76EF0089F47B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D088EA91198C76EF0089F47B /* Harmful Algal BloomTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Harmful Algal BloomTests-Info.plist"; sourceTree = "<group>"; };
 		D088EA93198C76EF0089F47B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				D088EA5B198C76EF0089F47B /* EcoSleuth.app */,
-				D088EA87198C76EF0089F47B /* Harmful Algal BloomTests.xctest */,
+				D088EA87198C76EF0089F47B /* EcoSleuthTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			);
 			name = EcoSleuthTests;
 			productName = "Harmful Algal BloomTests";
-			productReference = D088EA87198C76EF0089F47B /* Harmful Algal BloomTests.xctest */;
+			productReference = D088EA87198C76EF0089F47B /* EcoSleuthTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */

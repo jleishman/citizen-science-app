@@ -34,6 +34,8 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
 
 @property (strong, nonatomic) NSOperationQueue *urlConnectionOperationQueue;
 
+@property (strong, nonatomic) NSArray *availableSourceTypes;
+
 @end
 
 @interface ESHarmfulAlgalBloomViewController (UIPickerViewSupport) <UIPickerViewDataSource,
@@ -42,7 +44,8 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
 @end
 
 @interface ESHarmfulAlgalBloomViewController (UIImagePickerControllerSupport) <UINavigationControllerDelegate,
-                                                                                UIImagePickerControllerDelegate>
+                                                                               UIImagePickerControllerDelegate,
+                                                                               UIActionSheetDelegate>
 
 @end
 
@@ -154,6 +157,93 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
                            completionHandler:handler];
 }
 
+- (void)captureImage {
+    NSMutableArray *availableSourceTypes = [NSMutableArray new];
+    NSMutableArray *sourceTypeButtonTitles = [NSMutableArray new];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES) {
+        [availableSourceTypes addObject:@(UIImagePickerControllerSourceTypeCamera)];
+        
+        NSString *buttonTitle = NSLocalizedStringWithDefaultValue(@"Source Type Camera Button Title",
+                                                                  NSStringFromClass([self class]),
+                                                                  [NSBundle mainBundle],
+                                                                  @"Camera",
+                                                                  nil);
+        
+        [sourceTypeButtonTitles addObject:buttonTitle];
+    }
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] == YES) {
+        [availableSourceTypes addObject:@(UIImagePickerControllerSourceTypePhotoLibrary)];
+        
+        NSString *buttonTitle = NSLocalizedStringWithDefaultValue(@"Source Type Photo Library Button Title",
+                                                                  NSStringFromClass([self class]),
+                                                                  [NSBundle mainBundle],
+                                                                  @"Photo Library",
+                                                                  nil);
+        
+        [sourceTypeButtonTitles addObject:buttonTitle];
+    }
+
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] == YES) {
+        [availableSourceTypes addObject:@(UIImagePickerControllerSourceTypeSavedPhotosAlbum)];
+        
+        NSString *buttonTitle = NSLocalizedStringWithDefaultValue(@"Source Type Camera Roll Button Title",
+                                                                  NSStringFromClass([self class]),
+                                                                  [NSBundle mainBundle],
+                                                                  @"Camera Roll",
+                                                                  nil);
+        
+        [sourceTypeButtonTitles addObject:buttonTitle];
+    }
+    
+    if (availableSourceTypes.count == 1) {
+        [self _captureImageWithSourceType:[availableSourceTypes.firstObject integerValue]];
+    }
+    else {
+        self.availableSourceTypes = availableSourceTypes.copy;
+        
+        NSString *cancelButtonTitle = NSLocalizedStringWithDefaultValue(@"Source Type Cancel Button Title",
+                                                                        NSStringFromClass([self class]),
+                                                                        [NSBundle mainBundle],
+                                                                        @"Cancel",
+                                                                        nil);
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        
+        for (NSString *buttonTitle in sourceTypeButtonTitles) {
+            [actionSheet addButtonWithTitle:buttonTitle];
+        }
+        
+        [actionSheet addButtonWithTitle:cancelButtonTitle];
+        actionSheet.cancelButtonIndex = [sourceTypeButtonTitles count];
+        
+        [actionSheet showInView:self.view];
+    }
+}
+
+- (void)_captureImageWithSourceType:(UIImagePickerControllerSourceType)sourceType {
+    NSAssert([UIImagePickerController isSourceTypeAvailable:sourceType] == YES,
+             @"Source type is unavailable.");
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.sourceType = sourceType;
+    
+    if (sourceType == UIImagePickerControllerSourceTypeCamera) {
+        imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+    }
+    
+    imagePickerController.delegate = self;
+    
+    [self presentViewController:imagePickerController
+                       animated:YES
+                     completion:NULL];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -175,20 +265,18 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
     
     self.algaeColorTextField.inputView = self.algaeColorPickerView;
     
-    if (self.report.image == nil) {
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePickerController.delegate = self;
-        
-        [self presentViewController:imagePickerController
-                           animated:YES
-                         completion:NULL];
-    }
-    
     [self _updateAlgaeColorTextField];
     [self _updateWaterColorTextField];
     [self _updateLatitudeLabel];
     [self _updateLongitudeLabel];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.report.image == nil) {
+        [self captureImage];
+    }
 }
 
 #pragma mark UITableViewDelegate
@@ -288,6 +376,8 @@ didUpdateUserLocation:(MKUserLocation *)userLocation {
 
 @implementation ESHarmfulAlgalBloomViewController (UIImagePickerControllerSupport)
 
+#pragma mark UIImagePickerControllerDelegate
+
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
@@ -298,6 +388,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [self dismissViewControllerAnimated:YES
                              completion:NULL];
+}
+
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != self.availableSourceTypes.count) {
+        NSNumber *sourceType = self.availableSourceTypes[buttonIndex];
+        
+        [self _captureImageWithSourceType:sourceType.integerValue];
+        
+        self.availableSourceTypes = nil;
+    }
 }
 
 @end

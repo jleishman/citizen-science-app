@@ -28,6 +28,8 @@
 
 - (IBAction)submit;
 
+- (IBAction)captureImage;
+
 @end
 
 @interface ESHarmfulAlgalBloomViewController (MKMapViewSupport) <MKMapViewDelegate>
