@@ -7,6 +7,7 @@
 //
 
 #import "ESNavigationViewController.h"
+#import "ESSocrataAdapter.h"
 
 @interface ESNavigationViewController ()
 
@@ -28,6 +29,7 @@
         ESHarmfulAlgalBloomViewController *habVC = segue.destinationViewController;
         
         habVC.report = newReport;
+        habVC.dataReporter = [ESSocrataAdapter new];
     }
 }
 
