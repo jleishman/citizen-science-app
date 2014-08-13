@@ -12,16 +12,6 @@ static NSString * const HABHarmfulAlgalBloomWaterColorsName = @"Water Colors";
 
 static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 
-static NSString * const HABHarmfulAlgalBloomSocrataData = @"Socrata Credentials";
-
-static NSString * const HABSocrataURLKey = @"URL";
-
-static NSString * const HABSocrataUsernameKey = @"Username";
-
-static NSString * const HABSocrataPasswordKey = @"Password";
-
-static NSString * const HABSocrataAppTokenKey = @"App Token";
-
 @interface ESHarmfulAlgalBloomViewController ()
 
 @property (strong, nonatomic) NSArray *waterColors;
@@ -31,8 +21,6 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
 @property (strong, nonatomic) UIPickerView *waterColorPickerView;
 
 @property (strong, nonatomic) UIPickerView *algaeColorPickerView;
-
-@property (strong, nonatomic) NSOperationQueue *urlConnectionOperationQueue;
 
 @property (strong, nonatomic) NSArray *availableSourceTypes;
 
@@ -83,78 +71,16 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
 }
 
 - (void)submit {
-    NSDictionary *dictionary = @{@"water_color" : self.report.waterColor,
-                                 @"algae_color" : self.report.algaeColor,
-                                 @"color_in_water_column" : self.report.colorInWaterColumn,
-                                 @"lat" : self.report.latitude,
-                                 @"long" : self.report.longitude};
-    
-    NSError *error = nil;
-    
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                   options:0
-                                                     error:&error];
-    
-    NSURL *socrataDataURL = [[NSBundle mainBundle] URLForResource:HABHarmfulAlgalBloomSocrataData
-                                                    withExtension:@"plist"];
-    
-    NSDictionary *socrataData = [NSDictionary dictionaryWithContentsOfURL:socrataDataURL];
-    
-    NSURL *socrataDatasetURL = [NSURL URLWithString:socrataData[HABSocrataURLKey]];
-    
-    NSString *username = socrataData[HABSocrataUsernameKey];
-    
-    NSString *password = socrataData[HABSocrataPasswordKey];
-    
-    NSString *appToken = socrataData[HABSocrataAppTokenKey];
-    
-    NSString *credentialsString = [NSString stringWithFormat:@"%@:%@", username, password];
-    
-    NSData *authenticationData = [credentialsString dataUsingEncoding:NSASCIIStringEncoding];
-    
-    NSString *base64EncodedAuthenticationData = [authenticationData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
-    
-    NSString *authenticationString = [NSString stringWithFormat:@"Basic %@",
-                                      base64EncodedAuthenticationData];
-    
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:socrataDatasetURL];
-    urlRequest.HTTPMethod = @"POST";
-    urlRequest.HTTPBody = data;
-    
-    [urlRequest setValue:appToken forHTTPHeaderField:@"X-App-Token"];
-    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-    [urlRequest setValue:authenticationString forHTTPHeaderField:@"Authorization"];
-    
-    void (^handler)(NSURLResponse *,
-                    NSData *,
-                    NSError *) = ^(NSURLResponse *urlResponse,
-                                   NSData *data,
-                                   NSError *connectionError) {
-        if ([urlResponse isKindOfClass:[NSHTTPURLResponse class]] == YES) {
-            NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse *)urlResponse;
-            
+    [self.dataReporter submitReport:self.report completionBlock:^(NSError *error) {
+        if (error != nil) {
+            // TODO: Show alert view.
+        }
+        else {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                if (httpURLResponse.statusCode != 200) {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Submitting Report"
-                                                                        message:@"There was a problem saving your report to Socrata."
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"Okay"
-                                                              otherButtonTitles:nil];
-                    
-                    [alertView show];
-                }
-                else {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
+                [self.navigationController popViewControllerAnimated:YES];
             }];
         }
-    };
-    
-    self.urlConnectionOperationQueue = [NSOperationQueue new];
-    
-    [NSURLConnection sendAsynchronousRequest:urlRequest
-                                       queue:self.urlConnectionOperationQueue
-                           completionHandler:handler];
+    }];
 }
 
 - (void)captureImage {

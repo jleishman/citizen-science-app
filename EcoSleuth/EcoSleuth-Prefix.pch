@@ -17,6 +17,7 @@
     #import <MapKit/MapKit.h>
 
     #import "ESHarmfulAlgalBloomReport.h"
+    #import "ESDataAdapter.h"
 
     #import "ESNavigationViewController.h"
     #import "ESHarmfulAlgalBloomViewController.h"

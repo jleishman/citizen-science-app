@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="HarmfulAlgalBloomReport" representedClassName="CSHarmfulAlgalBloomReport" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="14A314h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="HarmfulAlgalBloomReport" representedClassName="ESHarmfulAlgalBloomReport" syncable="YES">
         <attribute name="algaeColor" attributeType="String" syncable="YES"/>
         <attribute name="colorInWaterColumn" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="image" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
