@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45C5CE8A199AD07000018624 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 45C5CE89199AD07000018624 /* default.gpx */; };
 		D088EA5F198C76EF0089F47B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA5E198C76EF0089F47B /* Foundation.framework */; };
 		D088EA61198C76EF0089F47B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA60198C76EF0089F47B /* CoreGraphics.framework */; };
 		D088EA63198C76EF0089F47B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA62198C76EF0089F47B /* UIKit.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45C5CE89199AD07000018624 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		D088EA5B198C76EF0089F47B /* EcoSleuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoSleuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D088EA5E198C76EF0089F47B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D088EA60198C76EF0089F47B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +179,7 @@
 		D088EA67198C76EF0089F47B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				45C5CE89199AD07000018624 /* default.gpx */,
 				D088EA68198C76EF0089F47B /* EcoSleuth-Info.plist */,
 				D088EA69198C76EF0089F47B /* InfoPlist.strings */,
 				D088EA6C198C76EF0089F47B /* main.m */,
@@ -290,6 +293,7 @@
 				D088EAA8198D26AA0089F47B /* Water Colors.strings in Resources */,
 				D088EA6B198C76EF0089F47B /* InfoPlist.strings in Resources */,
 				D088EAA5198D24830089F47B /* Water Colors.plist in Resources */,
+				45C5CE8A199AD07000018624 /* default.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
