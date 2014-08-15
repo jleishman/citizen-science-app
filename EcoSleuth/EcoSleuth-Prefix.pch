@@ -18,6 +18,8 @@
 
     #import "ESHarmfulAlgalBloomReport.h"
     #import "ESDataAdapter.h"
+    #import "ESWebServiceAdapter.h"
+    #import "ESSocrataAdapter.h"
 
     #import "ESNavigationViewController.h"
     #import "ESHarmfulAlgalBloomViewController.h"

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ESWebServiceAdapter : NSObject
+#import "ESDataAdapter.h"
+
+@interface ESWebServiceAdapter : NSObject <ESDataAdapter>
 
 @end

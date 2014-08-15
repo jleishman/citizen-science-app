@@ -10,6 +10,7 @@
 		D014F8B3199AED84003BCF0C /* ESSocrataAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D014F8B2199AED84003BCF0C /* ESSocrataAdapter.m */; };
 		D014F8B6199AED99003BCF0C /* ESWebServiceAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D014F8B5199AED99003BCF0C /* ESWebServiceAdapter.m */; };
 		D014F8B9199B7C2D003BCF0C /* ESSocrataAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D014F8B8199B7C2D003BCF0C /* ESSocrataAdapterTests.m */; };
+		D0354DD8199E0FF100E6B7D0 /* Web Service.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0354DD7199E0FF100E6B7D0 /* Web Service.plist */; };
 		D088EA5F198C76EF0089F47B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA5E198C76EF0089F47B /* Foundation.framework */; };
 		D088EA61198C76EF0089F47B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA60198C76EF0089F47B /* CoreGraphics.framework */; };
 		D088EA63198C76EF0089F47B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D088EA62198C76EF0089F47B /* UIKit.framework */; };
@@ -55,6 +56,7 @@
 		D014F8B5199AED99003BCF0C /* ESWebServiceAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESWebServiceAdapter.m; sourceTree = "<group>"; };
 		D014F8B7199AEDAD003BCF0C /* ESDataAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDataAdapter.h; sourceTree = "<group>"; };
 		D014F8B8199B7C2D003BCF0C /* ESSocrataAdapterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSocrataAdapterTests.m; sourceTree = "<group>"; };
+		D0354DD7199E0FF100E6B7D0 /* Web Service.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Web Service.plist"; sourceTree = "<group>"; };
 		D088EA5B198C76EF0089F47B /* EcoSleuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoSleuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D088EA5E198C76EF0089F47B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D088EA60198C76EF0089F47B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -183,6 +185,7 @@
 				D0D139E7198DB3B900991DA9 /* Algae Colors.strings */,
 				D088EA67198C76EF0089F47B /* Supporting Files */,
 				D0D139EC198DC03200991DA9 /* Socrata Credentials.plist */,
+				D0354DD7199E0FF100E6B7D0 /* Web Service.plist */,
 			);
 			path = EcoSleuth;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				D0D139E5198DB3B900991DA9 /* Algae Colors.strings in Resources */,
 				D088EAA8198D26AA0089F47B /* Water Colors.strings in Resources */,
 				D088EA6B198C76EF0089F47B /* InfoPlist.strings in Resources */,
+				D0354DD8199E0FF100E6B7D0 /* Web Service.plist in Resources */,
 				D088EAA5198D24830089F47B /* Water Colors.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@
         ESHarmfulAlgalBloomViewController *habVC = segue.destinationViewController;
         
         habVC.report = newReport;
-        habVC.dataReporter = [ESSocrataAdapter new];
+        habVC.dataReporter = [ESWebServiceAdapter new];
     }
 }
 
