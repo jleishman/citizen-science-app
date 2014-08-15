@@ -22,17 +22,15 @@ static NSString * const ESWebServiceURLKey = @"URL";
 
 - (void)submitReport:(ESHarmfulAlgalBloomReport *)report
      completionBlock:(ESDataAdapterCompletionBlock)completionBlock {
-    NSDictionary *dictionary = @{@"water_color" : report.waterColor,
-                                 @"algae_color" : report.algaeColor,
-                                 @"color_in_water_column" : report.colorInWaterColumn,
-                                 @"lat" : report.latitude,
-                                 @"long" : report.longitude};
+    NSDictionary *dictionary = @{@"lat" : report.latitude,
+                                 @"long" : report.longitude,
+                                 @"t_code" : @(1)};
     
     NSError *error = nil;
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                   options:0
-                                                     error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:0
+                                                         error:&error];
     
     NSURL *webServiceDataURL = [[NSBundle mainBundle] URLForResource:ESWebServiceDataName
                                                        withExtension:@"plist"];
@@ -43,7 +41,7 @@ static NSString * const ESWebServiceURLKey = @"URL";
     
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:webServiceURL];
     urlRequest.HTTPMethod = @"POST";
-    urlRequest.HTTPBody = data;
+    urlRequest.HTTPBody = jsonData;
     
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     
