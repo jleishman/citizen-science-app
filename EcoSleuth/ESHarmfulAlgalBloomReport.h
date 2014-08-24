@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSString * waterColor;
 @property (nonatomic, retain) NSString * algaeColor;
 @property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSNumber *submitted;
 
 @end

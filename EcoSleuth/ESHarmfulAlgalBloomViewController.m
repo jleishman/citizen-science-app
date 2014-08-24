@@ -70,6 +70,28 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
     [self _updateLongitudeLabel];
 }
 
+- (void)_updateNavigationItem {
+    if (self.report.submitted.boolValue == YES) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                              target:self
+                                                                                              action:@selector(cancel)];
+        
+        NSString *title = NSLocalizedStringWithDefaultValue(@"Submit Button Title",
+                                                            NSStringFromClass([self class]),
+                                                            [NSBundle mainBundle],
+                                                            @"Submit",
+                                                            nil);
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                                  style:UIBarButtonItemStyleDone
+                                                                                 target:self
+                                                                                 action:@selector(submit)];
+    }
+}
+
 - (void)submit {
     [self.dataReporter submitReport:self.report
                     completionBlock:^(NSURLResponse *response,
@@ -80,10 +102,18 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
         }
         else {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.navigationController popViewControllerAnimated:YES];
+                self.report.submitted = @(YES);
+                
+                [self.delegate harmfulAlgalBloomViewController:self
+                                               didSubmitReport:self.report];
             }];
         }
     }];
+}
+
+- (void)cancel {
+    [self.delegate harmfulAlgalBloomViewController:self
+                            didCancelEditingReport:self.report];
 }
 
 - (void)captureImage {
@@ -194,16 +224,19 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
     
     self.algaeColorTextField.inputView = self.algaeColorPickerView;
     
+    [self _updateInterface];
     [self _updateAlgaeColorTextField];
     [self _updateWaterColorTextField];
     [self _updateLatitudeLabel];
     [self _updateLongitudeLabel];
+    [self _updateNavigationItem];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (self.report.image == nil) {
+    if (self.report.submitted.boolValue == NO &&
+        self.report.image == nil) {
         [self captureImage];
     }
 }

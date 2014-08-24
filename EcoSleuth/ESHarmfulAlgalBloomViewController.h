@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ESHarmfulAlgalBloomViewControllerDelegate;
+
 @interface ESHarmfulAlgalBloomViewController : UITableViewController
+
+@property (weak) id <ESHarmfulAlgalBloomViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) ESHarmfulAlgalBloomReport *report;
 
@@ -30,10 +34,22 @@
 
 - (IBAction)submit;
 
+- (IBAction)cancel;
+
 - (IBAction)captureImage;
 
 @end
 
 @interface ESHarmfulAlgalBloomViewController (MKMapViewSupport) <MKMapViewDelegate>
+
+@end
+
+@protocol ESHarmfulAlgalBloomViewControllerDelegate <NSObject>
+
+- (void)harmfulAlgalBloomViewController:(ESHarmfulAlgalBloomViewController *)harmfulAlgalBloomViewController
+                        didSubmitReport:(ESHarmfulAlgalBloomReport *)report;
+
+- (void)harmfulAlgalBloomViewController:(ESHarmfulAlgalBloomViewController *)harmfulAlgalBloomViewController
+                 didCancelEditingReport:(ESHarmfulAlgalBloomReport *)report;
 
 @end

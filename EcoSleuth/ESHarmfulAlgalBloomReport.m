@@ -18,6 +18,7 @@
 @dynamic waterColor;
 @dynamic algaeColor;
 @dynamic timestamp;
+@dynamic submitted;
 
 - (void)awakeFromInsert {
     [super awakeFromInsert];
@@ -28,6 +29,7 @@
     self.timestamp = [NSDate date];
     self.latitude = @(0);
     self.longitude = @(0);
+    self.submitted = @(NO);
 }
 
 - (UIImage *)image {

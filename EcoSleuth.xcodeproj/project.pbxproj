@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D001944D19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D001944C19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.m */; };
 		D014F8B3199AED84003BCF0C /* ESSocrataAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D014F8B2199AED84003BCF0C /* ESSocrataAdapter.m */; };
 		D014F8B6199AED99003BCF0C /* ESWebServiceAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D014F8B5199AED99003BCF0C /* ESWebServiceAdapter.m */; };
 		D014F8B9199B7C2D003BCF0C /* ESSocrataAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D014F8B8199B7C2D003BCF0C /* ESSocrataAdapterTests.m */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		45C5CE89199AD07000018624 /* Forrest Branch, Chesapeake Bay, Maryland.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Forrest Branch, Chesapeake Bay, Maryland.gpx"; sourceTree = "<group>"; };
+		D001944B19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHarmfulAlgalBloomReportsTableViewController.h; sourceTree = "<group>"; };
+		D001944C19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHarmfulAlgalBloomReportsTableViewController.m; sourceTree = "<group>"; };
 		D014F8B1199AED84003BCF0C /* ESSocrataAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSocrataAdapter.h; sourceTree = "<group>"; };
 		D014F8B2199AED84003BCF0C /* ESSocrataAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSocrataAdapter.m; sourceTree = "<group>"; };
 		D014F8B4199AED99003BCF0C /* ESWebServiceAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESWebServiceAdapter.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				D088EAB9198D64D30089F47B /* ESNavigationViewController.m */,
 				D088EAA1198C796C0089F47B /* ESHarmfulAlgalBloomViewController.h */,
 				D088EAA2198C796C0089F47B /* ESHarmfulAlgalBloomViewController.m */,
+				D001944B19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.h */,
+				D001944C19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.m */,
 				D088EA81198C76EF0089F47B /* Images.xcassets */,
 				D014F8B7199AEDAD003BCF0C /* ESDataAdapter.h */,
 				D014F8B1199AED84003BCF0C /* ESSocrataAdapter.h */,
@@ -326,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D001944D19AA8D3A0061219D /* ESHarmfulAlgalBloomReportsTableViewController.m in Sources */,
 				D014F8B6199AED99003BCF0C /* ESWebServiceAdapter.m in Sources */,
 				D088EA7A198C76EF0089F47B /* EcoSleuth.xcdatamodeld in Sources */,
 				D088EA71198C76EF0089F47B /* ESAppDelegate.m in Sources */,

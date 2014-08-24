@@ -21,6 +21,7 @@
     #import "ESWebServiceAdapter.h"
     #import "ESSocrataAdapter.h"
 
-    #import "ESNavigationViewController.h"
     #import "ESHarmfulAlgalBloomViewController.h"
+    #import "ESHarmfulAlgalBloomReportsTableViewController.h"
+    #import "ESNavigationViewController.h"
 #endif
