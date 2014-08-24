@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
-        <!--Navigation View Controller - EcoSleuth-->
+        <!--Navigation View Controller - Algae Alert-->
         <scene sceneID="2tC-FG-B8E">
             <objects>
                 <tableViewController id="1Xo-nw-zBn" customClass="ESNavigationViewController" sceneMemberID="viewController">
@@ -99,7 +99,7 @@
                             <outlet property="delegate" destination="1Xo-nw-zBn" id="q1Q-iX-Nzy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="EcoSleuth" id="Y67-E2-EuK"/>
+                    <navigationItem key="navigationItem" title="Algae Alert" id="Y67-E2-EuK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssI-A2-748" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

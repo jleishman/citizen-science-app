@@ -60,7 +60,7 @@
 		D014F8B7199AEDAD003BCF0C /* ESDataAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDataAdapter.h; sourceTree = "<group>"; };
 		D014F8B8199B7C2D003BCF0C /* ESSocrataAdapterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSocrataAdapterTests.m; sourceTree = "<group>"; };
 		D0354DD7199E0FF100E6B7D0 /* Web Service.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Web Service.plist"; sourceTree = "<group>"; };
-		D088EA5B198C76EF0089F47B /* EcoSleuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoSleuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D088EA5B198C76EF0089F47B /* Algae Alert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Algae Alert.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D088EA5E198C76EF0089F47B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D088EA60198C76EF0089F47B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D088EA62198C76EF0089F47B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -143,7 +143,7 @@
 		D088EA5C198C76EF0089F47B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D088EA5B198C76EF0089F47B /* EcoSleuth.app */,
+				D088EA5B198C76EF0089F47B /* Algae Alert.app */,
 				D088EA87198C76EF0089F47B /* EcoSleuthTests.xctest */,
 			);
 			name = Products;
@@ -242,7 +242,7 @@
 			);
 			name = EcoSleuth;
 			productName = "Harmful Algal Bloom";
-			productReference = D088EA5B198C76EF0089F47B /* EcoSleuth.app */;
+			productReference = D088EA5B198C76EF0089F47B /* Algae Alert.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D088EA86198C76EF0089F47B /* EcoSleuthTests */ = {
@@ -503,7 +503,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EcoSleuth/EcoSleuth-Prefix.pch";
 				INFOPLIST_FILE = "EcoSleuth/EcoSleuth-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Algae Alert";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -516,7 +516,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EcoSleuth/EcoSleuth-Prefix.pch";
 				INFOPLIST_FILE = "EcoSleuth/EcoSleuth-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Algae Alert";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
