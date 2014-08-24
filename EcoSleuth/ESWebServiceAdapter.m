@@ -63,7 +63,7 @@ static NSString * const ESWebServiceURLKey = @"URL";
                 }
                 
                 if (completionBlock != NULL) {
-                    completionBlock(error);
+                    completionBlock(urlResponse, data, error);
                 }
             }];
         }

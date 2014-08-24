@@ -72,7 +72,9 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 
 - (void)submit {
     [self.dataReporter submitReport:self.report
-                    completionBlock:^(NSError *error) {
+                    completionBlock:^(NSURLResponse *response,
+                                      NSData *data,
+                                      NSError *error) {
         if (error != nil) {
             // TODO: Show alert view.
         }

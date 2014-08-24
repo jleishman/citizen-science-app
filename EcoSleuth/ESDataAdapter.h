@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^ESDataAdapterCompletionBlock)(NSError *error);
+typedef void (^ESDataAdapterCompletionBlock)(NSURLResponse *response,
+                                             NSData *data,
+                                             NSError *error);
 
 @protocol ESDataAdapter <NSObject>
 

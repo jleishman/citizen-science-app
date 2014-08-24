@@ -8,15 +8,30 @@
 
 #import "ESSocrataAdapter.h"
 
-static NSString * const HABHarmfulAlgalBloomSocrataData = @"Socrata Credentials";
+// Refer to https://support.socrata.com/hc/en-us/articles/202950258-What-is-a-Dataset-UID-or-a-dataset-4x4-
+// for details on the domain and unique identifiers for Socrata. Note that the
+// "datasets" referenced there seem to be for visualizations and web
+// presentations. We're using the paths for adding data and uploading images.
 
-static NSString * const HABSocrataURLKey = @"URL";
+static NSString * const ESSocrataBaseURLFormatString = @"https://%@";
 
-static NSString * const HABSocrataUsernameKey = @"Username";
+static NSString * const ESSocrataResourcePathFormatString = @"/resource/%@.json";
 
-static NSString * const HABSocrataPasswordKey = @"Password";
+static NSString * const ESSocrataFilesPathFormatString = @"/views/%@/files";
 
-static NSString * const HABSocrataAppTokenKey = @"App Token";
+static NSString * const ESSocrataConfigurationResourceName = @"Socrata Configuration";
+
+static NSString * const ESSocrataDomainKey = @"Domain";
+
+static NSString * const ESSocrataDatasetUniqueIdentifierKey = @"Dataset Unique Identifier";
+
+static NSString * const ESSocrataUsernameKey = @"Username";
+
+static NSString * const ESSocrataPasswordKey = @"Password";
+
+static NSString * const ESSocrataAppTokenKey = @"App Token";
+
+static NSString * const ESSocrataFileIdentifierKey = @"file";
 
 @interface ESSocrataAdapter ()
 
@@ -26,34 +41,66 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
 
 @implementation ESSocrataAdapter
 
-- (void)submitReport:(ESHarmfulAlgalBloomReport *)report
-     completionBlock:(ESDataAdapterCompletionBlock)completionBlock {
-    NSDictionary *dictionary = @{@"water_color" : report.waterColor,
-                                 @"algae_color" : report.algaeColor,
-                                 @"color_in_water_column" : report.colorInWaterColumn,
-                                 @"lat" : report.latitude,
-                                 @"long" : report.longitude};
++ (NSURL *)_configurationURL {
+    return [[NSBundle mainBundle] URLForResource:ESSocrataConfigurationResourceName
+                                   withExtension:@"plist"];
+}
+
++ (NSDictionary *)_configuration {
+    return [NSDictionary dictionaryWithContentsOfURL:[self _configurationURL]];
+}
+
++ (NSString *)_domain {
+    return [self _configuration][ESSocrataDomainKey];
+}
+
++ (NSURL *)_baseURL {
+    NSString *baseURLString = [NSString stringWithFormat:
+                               ESSocrataBaseURLFormatString,
+                               [self _domain]];
     
-    NSError *error = nil;
+    return [NSURL URLWithString:baseURLString];
+}
+
++ (NSString *)_datasetUniqueIdentifier {
+    return [self _configuration][ESSocrataDatasetUniqueIdentifierKey];
+}
+
++ (NSURL *)_resourceURL {
+    NSString *resourcePath = [NSString stringWithFormat:
+                              ESSocrataResourcePathFormatString,
+                              [self _datasetUniqueIdentifier]];
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                   options:0
-                                                     error:&error];
+    return [[self _baseURL] URLByAppendingPathComponent:resourcePath];
+}
+
++ (NSURL *)_filesURL {
+    NSString *filesPath = [NSString stringWithFormat:
+                           ESSocrataFilesPathFormatString,
+                           [self _datasetUniqueIdentifier]];
     
-    NSURL *socrataDataURL = [[NSBundle mainBundle] URLForResource:HABHarmfulAlgalBloomSocrataData
-                                                    withExtension:@"plist"];
+    return [[self _baseURL] URLByAppendingPathComponent:filesPath];
+}
+
++ (NSString *)_username {
+    return [self _configuration][ESSocrataUsernameKey];
+}
+
++ (NSString *)_password {
+    return [self _configuration][ESSocrataPasswordKey];
+}
+
++ (NSString *)_appToken {
+    return [self _configuration][ESSocrataAppTokenKey];
+}
+
++ (NSString *)_base64EncodedAuthenticationData {
+    NSString *username = [ESSocrataAdapter _username];
     
-    NSDictionary *socrataData = [NSDictionary dictionaryWithContentsOfURL:socrataDataURL];
+    NSString *password = [ESSocrataAdapter _password];
     
-    NSURL *socrataDatasetURL = [NSURL URLWithString:socrataData[HABSocrataURLKey]];
-    
-    NSString *username = socrataData[HABSocrataUsernameKey];
-    
-    NSString *password = socrataData[HABSocrataPasswordKey];
-    
-    NSString *appToken = socrataData[HABSocrataAppTokenKey];
-    
-    NSString *credentialsString = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSString *credentialsString = [NSString stringWithFormat:@"%@:%@",
+                                   username, password];
     
     NSData *authenticationData = [credentialsString dataUsingEncoding:NSASCIIStringEncoding];
     
@@ -62,43 +109,167 @@ static NSString * const HABSocrataAppTokenKey = @"App Token";
     NSString *authenticationString = [NSString stringWithFormat:@"Basic %@",
                                       base64EncodedAuthenticationData];
     
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:socrataDatasetURL];
-    urlRequest.HTTPMethod = @"POST";
-    urlRequest.HTTPBody = data;
+    return authenticationString;
+}
+
++ (NSString *)_generateBoundaryString {
+    return [[NSUUID UUID] UUIDString];
+}
+
++ (void)_setAuthorizationHeaderWithRequest:(NSMutableURLRequest *)request {
+    [request setValue:[ESSocrataAdapter _base64EncodedAuthenticationData]
+   forHTTPHeaderField:@"Authorization"];
+}
+
++ (void)_setAppTokenWithRequest:(NSMutableURLRequest *)request {
+    [request setValue:[ESSocrataAdapter _appToken]
+   forHTTPHeaderField:@"X-App-Token"];
+}
+
++ (void)_setAppTokenAndAuthorizationWithRequest:(NSMutableURLRequest *)request {
+    [self _setAppTokenWithRequest:request];
+    [self _setAuthorizationHeaderWithRequest:request];
+}
+
+- (void)_uploadImage:(UIImage *)image
+     completionBlock:(ESDataAdapterCompletionBlock)outerCompletionBlock {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[ESSocrataAdapter _filesURL]];
     
-    [urlRequest setValue:appToken forHTTPHeaderField:@"X-App-Token"];
-    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-    [urlRequest setValue:authenticationString forHTTPHeaderField:@"Authorization"];
+    [ESSocrataAdapter _setAppTokenAndAuthorizationWithRequest:request];
     
-    void (^handler)(NSURLResponse *,
-                    NSData *,
-                    NSError *) = ^(NSURLResponse *urlResponse,
-                                   NSData *data,
-                                   NSError *connectionError) {
-        if ([urlResponse isKindOfClass:[NSHTTPURLResponse class]] == YES) {
-            NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse *)urlResponse;
-            
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSError *error = nil;
-                
-                if (httpURLResponse.statusCode != 200) {
-                    error = nil;
-                }
-                else {
-                }
-                
-                if (completionBlock != NULL) {
-                    completionBlock(error);
-                }
-            }];
+    request.HTTPMethod = @"POST";
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    
+    NSAssert(imageData != nil, @"Image data should not be nil.");
+    
+    NSString *imageType = @"image/png";
+    
+    NSString *boundaryString = [[NSUUID UUID] UUIDString];
+    
+    NSAssert(boundaryString, @"Boundary string should not be nil.");
+    
+    NSString *bodyPrefixString = [NSString stringWithFormat:
+                                  @// empty preamble
+                                  "\r\n"
+                                  "--%@\r\n"
+                                  "Content-Disposition: form-data; name=\"upload\"; filename=\"%@\"\r\n"
+                                  "Content-Type: %@\r\n"
+                                  "\r\n",
+                                  boundaryString,
+                                  @"image",
+                                  imageType];
+    
+    NSData *bodyPrefixData = [bodyPrefixString dataUsingEncoding:NSASCIIStringEncoding];
+    
+    NSAssert(bodyPrefixData != nil, @"Body prefix data should not be nil.");
+    
+    NSString *bodySuffixString = [NSString stringWithFormat:
+                                  @"\r\n"
+                                  "--%@\r\n"
+                                  "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
+                                  "\r\n"
+                                  "Upload File\r\n"
+                                  "--%@--\r\n"
+                                  "\r\n",
+                                  //empty epilogue
+                                  boundaryString,
+                                  boundaryString];
+    
+    NSData *bodySuffixData = [bodySuffixString dataUsingEncoding:NSASCIIStringEncoding];
+    
+    NSAssert(bodySuffixData != nil, @"Body suffix data should not be nil.");
+    
+    NSString *contentTypeString = [NSString stringWithFormat:
+                                   @"multipart/form-data; boundary=\"%@\"",
+                                   boundaryString];
+    
+    [request setValue:contentTypeString forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *bodyData = [NSMutableData dataWithData:bodyPrefixData];
+    [bodyData appendData:imageData];
+    [bodyData appendData:bodySuffixData];
+    
+    NSAssert(bodyData != nil, @"Body data should not be nil.");
+    
+    request.HTTPBody = bodyData;
+    
+    NSString *contentLengthString = [NSString stringWithFormat:@"%@",
+                                     @(bodyData.length)];
+    
+    [request setValue:contentLengthString
+   forHTTPHeaderField:@"Content-Length"];
+
+    ESDataAdapterCompletionBlock innerCompletionBlock = ^(NSURLResponse *response,
+                                                          NSData *data,
+                                                          NSError *error) {
+        NSAssert(error == nil, @"Error should be nil.");
+        
+        if (outerCompletionBlock != NULL) {
+            outerCompletionBlock(response, data, error);
         }
     };
     
+    [self _sendAsynchronousRequest:request
+                   completionBlock:innerCompletionBlock];
+}
+
+- (void)_sendAsynchronousRequest:(NSURLRequest *)request
+                 completionBlock:(ESDataAdapterCompletionBlock)completionBlock {
     self.urlConnectionOperationQueue = [NSOperationQueue new];
     
-    [NSURLConnection sendAsynchronousRequest:urlRequest
+    [NSURLConnection sendAsynchronousRequest:request
                                        queue:self.urlConnectionOperationQueue
-                           completionHandler:handler];
+                           completionHandler:completionBlock];
+}
+
+- (void)submitReport:(ESHarmfulAlgalBloomReport *)report
+     completionBlock:(ESDataAdapterCompletionBlock)completionBlock {
+    [self _uploadImage:report.image
+       completionBlock:^(NSURLResponse *response,
+                         NSData *responseData,
+                         NSError *imageUploadError) {
+           NSAssert(imageUploadError == nil, @"Image upload error should be nil.");
+           
+           NSError *jsonDeserializationError = nil;
+           
+           NSDictionary *imageInformation = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                            options:0
+                                                                              error:&jsonDeserializationError];
+           
+           NSAssert(jsonDeserializationError == nil, @"JSON deserialization error should be nil.");
+           
+           NSString *fileIdentifier = imageInformation[ESSocrataFileIdentifierKey];
+           
+           NSDictionary *dictionary = @{@"water_color": report.waterColor,
+                                        @"algae_color": report.algaeColor,
+                                        @"color_in_water_column": report.colorInWaterColumn,
+                                        @"lat": report.latitude,
+                                        @"long": report.longitude,
+                                        @"image": fileIdentifier};
+           
+           NSError *jsonSerializationError = nil;
+           
+           NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                              options:0
+                                                                error:&jsonSerializationError];
+           
+           NSAssert(jsonData != nil, @"JSON data should not be nil.");
+           
+           NSAssert(jsonSerializationError == nil, @"JSON error should be nil.");
+
+           NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[ESSocrataAdapter _resourceURL]];
+           request.HTTPMethod = @"POST";
+           request.HTTPBody = jsonData;
+           
+           [request setValue:@"application/json"
+          forHTTPHeaderField:@"Content-type"];
+           
+           [ESSocrataAdapter _setAppTokenAndAuthorizationWithRequest:request];
+           
+           [self _sendAsynchronousRequest:request
+                          completionBlock:completionBlock];
+       }];
 }
 
 @end

@@ -35,7 +35,7 @@
 		D088EABA198D64D30089F47B /* ESNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D088EAB9198D64D30089F47B /* ESNavigationViewController.m */; };
 		D0D139E5198DB3B900991DA9 /* Algae Colors.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0D139E7198DB3B900991DA9 /* Algae Colors.strings */; };
 		D0D139EB198DB44E00991DA9 /* Algae Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0D139EA198DB44E00991DA9 /* Algae Colors.plist */; };
-		D0D139ED198DC03200991DA9 /* Socrata Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0D139EC198DC03200991DA9 /* Socrata Credentials.plist */; };
+		D0D139ED198DC03200991DA9 /* Socrata Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0D139EC198DC03200991DA9 /* Socrata Configuration.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +97,7 @@
 		D0D139E8198DB3BE00991DA9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Algae Colors.strings"; sourceTree = "<group>"; };
 		D0D139E9198DB3BF00991DA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Algae Colors.strings"; sourceTree = "<group>"; };
 		D0D139EA198DB44E00991DA9 /* Algae Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Algae Colors.plist"; sourceTree = "<group>"; };
-		D0D139EC198DC03200991DA9 /* Socrata Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Socrata Credentials.plist"; sourceTree = "<group>"; };
+		D0D139EC198DC03200991DA9 /* Socrata Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Socrata Configuration.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +184,7 @@
 				D088EAAA198D26AA0089F47B /* Water Colors.strings */,
 				D0D139E7198DB3B900991DA9 /* Algae Colors.strings */,
 				D088EA67198C76EF0089F47B /* Supporting Files */,
-				D0D139EC198DC03200991DA9 /* Socrata Credentials.plist */,
+				D0D139EC198DC03200991DA9 /* Socrata Configuration.plist */,
 				D0354DD7199E0FF100E6B7D0 /* Web Service.plist */,
 			);
 			path = EcoSleuth;
@@ -300,7 +300,7 @@
 			files = (
 				D0D139EB198DB44E00991DA9 /* Algae Colors.plist in Resources */,
 				D088EA77198C76EF0089F47B /* Main_iPad.storyboard in Resources */,
-				D0D139ED198DC03200991DA9 /* Socrata Credentials.plist in Resources */,
+				D0D139ED198DC03200991DA9 /* Socrata Configuration.plist in Resources */,
 				D088EA82198C76EF0089F47B /* Images.xcassets in Resources */,
 				D088EA74198C76EF0089F47B /* Main_iPhone.storyboard in Resources */,
 				D0D139E5198DB3B900991DA9 /* Algae Colors.strings in Resources */,
