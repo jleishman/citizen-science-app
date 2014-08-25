@@ -244,8 +244,8 @@ static NSString * const ESSocrataFileIdentifierKey = @"file";
            NSDictionary *dictionary = @{@"water_color": report.waterColor,
                                         @"algae_color": report.algaeColor,
                                         @"color_in_water_column": report.colorInWaterColumn,
-                                        @"lat": report.latitude,
-                                        @"long": report.longitude,
+                                        @"latitude": report.latitude,
+                                        @"longitude": report.longitude,
                                         @"image": fileIdentifier};
            
            NSError *jsonSerializationError = nil;
