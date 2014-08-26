@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (strong) id <ESDataAdapter> dataAdapter;
+
 @end

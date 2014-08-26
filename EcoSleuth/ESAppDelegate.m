@@ -21,6 +21,7 @@
     ESNavigationViewController *habNavigationController = navigationController.viewControllers.firstObject;
     
     habNavigationController.managedObjectContext = self.managedObjectContext;
+    habNavigationController.dataAdapter = [ESSocrataAdapter new];
     
     return YES;
 }

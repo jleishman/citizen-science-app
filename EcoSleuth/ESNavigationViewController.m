@@ -7,7 +7,7 @@
 //
 
 #import "ESNavigationViewController.h"
-#import "ESSocrataAdapter.h"
+#import "ESDataAdapter.h"
 
 typedef NS_ENUM(NSInteger, ESDeleteDraftActionSheetButtons) {
     ESDeleteDraftActionSheetButtonDelete = 0,
@@ -61,7 +61,6 @@ static NSString * const ESDraftReportsSegueIdentifier = @"Draft Reports";
         
         habVC.report = newReport;
         habVC.delegate = self;
-        habVC.dataReporter = [ESSocrataAdapter new];
     }
     else if ([segue.identifier isEqualToString:ESDraftReportsSegueIdentifier] == YES) {
         NSString *title = NSLocalizedStringWithDefaultValue(@"Draft Reports Title",
@@ -112,6 +111,22 @@ static NSString * const ESDraftReportsSegueIdentifier = @"Draft Reports";
 - (void)harmfulAlgalBloomViewController:(ESHarmfulAlgalBloomViewController *)harmfulAlgalBloomViewController
                         didSubmitReport:(ESHarmfulAlgalBloomReport *)report {
     [harmfulAlgalBloomViewController.navigationController popViewControllerAnimated:YES];
+    
+    [self.dataAdapter submitReport:report
+                   completionBlock:^(NSURLResponse *response,
+                                      NSData *data,
+                                      NSError *error) {
+                        if (error != nil) {
+                            // TODO: Show alert view.
+                        }
+                        else {
+                            report.submitted = @(YES);
+                            
+                            [report.managedObjectContext performBlock:^{
+                                [report.managedObjectContext save:NULL];
+                            }];
+                        }
+                    }];
 }
 
 - (void)harmfulAlgalBloomViewController:(ESHarmfulAlgalBloomViewController *)harmfulAlgalBloomViewController

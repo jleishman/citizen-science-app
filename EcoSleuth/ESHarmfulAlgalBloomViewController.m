@@ -93,17 +93,6 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
 }
 
 - (void)submit {
-    [self.dataReporter submitReport:self.report
-                    completionBlock:^(NSURLResponse *response,
-                                      NSData *data,
-                                      NSError *error) {
-        if (error != nil) {
-            // TODO: Show alert view.
-        }
-    }];
-            
-    self.report.submitted = @(YES);
-    
     [self.delegate harmfulAlgalBloomViewController:self
                                    didSubmitReport:self.report];
     

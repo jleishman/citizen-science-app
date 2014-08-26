@@ -16,8 +16,6 @@
 
 @property (strong, nonatomic) ESHarmfulAlgalBloomReport *report;
 
-@property (strong, nonatomic) id <ESDataAdapter> dataReporter;
-
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *waterColorTableViewCell;
