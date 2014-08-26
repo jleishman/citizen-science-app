@@ -241,12 +241,25 @@ static NSString * const ESSocrataFileIdentifierKey = @"file";
            
            NSString *fileIdentifier = imageInformation[ESSocrataFileIdentifierKey];
            
+           time_t time = [report.timestamp timeIntervalSince1970];
+           
+           struct tm timeStruct;
+           
+           localtime_r(&time, &timeStruct);
+           
+           char buffer[80];
+           
+           strftime(buffer, 80, "%m/%d/%Y %H:%M:%S %z", &timeStruct);
+           
+           NSString *dateString = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];
+           
            NSDictionary *dictionary = @{@"water_color": report.waterColor,
                                         @"algae_color": report.algaeColor,
                                         @"color_in_water_column": report.colorInWaterColumn,
                                         @"latitude": report.latitude,
                                         @"longitude": report.longitude,
-                                        @"image": fileIdentifier};
+                                        @"image": fileIdentifier,
+                                        @"timestamp": dateString};
            
            NSError *jsonSerializationError = nil;
            

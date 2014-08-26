@@ -100,15 +100,13 @@ static NSString * const HABHarmfulAlgalBloomAlgaeColorsName = @"Algae Colors";
         if (error != nil) {
             // TODO: Show alert view.
         }
-        else {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                self.report.submitted = @(YES);
-                
-                [self.delegate harmfulAlgalBloomViewController:self
-                                               didSubmitReport:self.report];
-            }];
-        }
     }];
+            
+    self.report.submitted = @(YES);
+    
+    [self.delegate harmfulAlgalBloomViewController:self
+                                   didSubmitReport:self.report];
+    
 }
 
 - (void)cancel {

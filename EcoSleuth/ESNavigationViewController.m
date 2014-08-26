@@ -37,6 +37,10 @@ static NSString * const ESDraftReportsSegueIdentifier = @"Draft Reports";
 
 @end
 
+@interface ESNavigationViewController (ESHarmfulAlgalBloomReportsTableViewControllerDelegate) <ESHarmfulAlgalBloomReportsTableViewControllerDelegate>
+
+@end
+
 @implementation ESNavigationViewController
 
 + (NSDateFormatter *)dateFormatter {
@@ -77,6 +81,7 @@ static NSString * const ESDraftReportsSegueIdentifier = @"Draft Reports";
         tableVC.managedObjectContext = self.managedObjectContext;
         tableVC.fetchRequest = fetchRequest;
         tableVC.navigationItem.title = title;
+        tableVC.delegate = self;
     }
     else if ([segue.identifier isEqualToString:ESPastReportsSegueIdentifier] == YES) {
         NSString *title = NSLocalizedStringWithDefaultValue(@"Past Reports Title",
@@ -96,6 +101,7 @@ static NSString * const ESDraftReportsSegueIdentifier = @"Draft Reports";
         tableVC.managedObjectContext = self.managedObjectContext;
         tableVC.fetchRequest = fetchRequest;
         tableVC.navigationItem.title = title;
+        tableVC.delegate = self;
     }
 }
 
@@ -170,6 +176,19 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (self.deleteDraftReportHandler != NULL) {
         self.deleteDraftReportHandler(buttonIndex);
     }
+}
+
+@end
+
+@implementation ESNavigationViewController (ESHarmfulAlgalBloomReportsTableViewControllerDelegate)
+
+- (void)harmfulAlgalBloomReportsTableViewController:(ESHarmfulAlgalBloomReportsTableViewController *)viewController
+                                    didSelectReport:(ESHarmfulAlgalBloomReport *)report {
+    ESHarmfulAlgalBloomViewController *reportVC = [ESHarmfulAlgalBloomViewController new];
+    reportVC.report = report;
+    
+    [viewController.navigationController pushViewController:reportVC
+                                                   animated:YES];
 }
 
 @end

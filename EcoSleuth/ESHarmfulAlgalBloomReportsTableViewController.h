@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ESHarmfulAlgalBloomReportsTableViewControllerDelegate;
+
 @interface ESHarmfulAlgalBloomReportsTableViewController : UITableViewController
+
+@property (weak) id <ESHarmfulAlgalBloomReportsTableViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) NSFetchRequest *fetchRequest;
 
 @property (strong) NSDateFormatter *dateFormatter;
+
+@end
+
+@protocol ESHarmfulAlgalBloomReportsTableViewControllerDelegate <NSObject>
+
+- (void)harmfulAlgalBloomReportsTableViewController:(ESHarmfulAlgalBloomReportsTableViewController *)viewController
+                                    didSelectReport:(ESHarmfulAlgalBloomReport *)report;
 
 @end
