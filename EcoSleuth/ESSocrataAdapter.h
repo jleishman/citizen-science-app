@@ -10,4 +10,8 @@
 
 @interface ESSocrataAdapter : NSObject <ESDataAdapter>
 
+@property (strong, nonatomic) NSURL *URL;
+
+- (instancetype)initWithURL:(NSURL *)URL;
+
 @end

@@ -8,6 +8,8 @@
 
 #import "ESAppDelegate.h"
 
+NSString * const ESSocrataFormURLString = @"https://opendata.socrata.com/views/jraf-t6d8/rows.html?method=createForm&successRedirect=https%3A%2F%2Fopendata.socrata.com%2Fdataset%2FSubmitReport%2Fjraf-t6d8%2Fform_success&errorRedirect=https%3A%2F%2Fopendata.socrata.com%2Fdataset%2FSubmitReport%2Fjraf-t6d8%2Fform_error";
+
 @implementation ESAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -21,7 +23,7 @@
     ESNavigationViewController *habNavigationController = navigationController.viewControllers.firstObject;
     
     habNavigationController.managedObjectContext = self.managedObjectContext;
-    habNavigationController.dataAdapter = [ESSocrataAdapter new];
+    habNavigationController.dataAdapter = [[ESSocrataAdapter alloc] initWithURL:[NSURL URLWithString:ESSocrataFormURLString]];
     
     return YES;
 }

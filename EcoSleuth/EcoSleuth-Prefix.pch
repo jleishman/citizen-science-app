@@ -16,6 +16,8 @@
     #import <CoreData/CoreData.h>
     #import <MapKit/MapKit.h>
 
+    #import "AFNetworking/AFNetworking.h"
+
     #import "ESHarmfulAlgalBloomReport.h"
     #import "ESDataAdapter.h"
     #import "ESWebServiceAdapter.h"
