@@ -12,6 +12,8 @@
 	<dict>
 		<key>0BDA9296DBB5DFCAF6DE7B8999FFA00E46659EAD</key>
 		<string>github.com:DataBay2014/citizen-science-app</string>
+		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
+		<string>github.com:AFNetworking/AFNetworking.git</string>
 		<key>EAD8B4B8-704A-4940-8B23-26B2828D268A</key>
 		<string>ssh://github.com/DataBay2014/citizen-science-app.git</string>
 	</dict>
@@ -21,6 +23,8 @@
 	<dict>
 		<key>0BDA9296DBB5DFCAF6DE7B8999FFA00E46659EAD</key>
 		<string>../..</string>
+		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
+		<string>../../AFNetworking</string>
 		<key>EAD8B4B8-704A-4940-8B23-26B2828D268A</key>
 		<string>../../../EcoSleuth</string>
 	</dict>
@@ -32,6 +36,14 @@
 	<string>0BDA9296DBB5DFCAF6DE7B8999FFA00E46659EAD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AFNetworking</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

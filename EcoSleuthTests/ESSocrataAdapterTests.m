@@ -11,6 +11,8 @@
 #import "ESAppDelegate.h"
 #import "ESSocrataAdapter.h"
 
+NSString * const ESSocrataFormURLString = @"https://opendata.socrata.com/views/jraf-t6d8/rows.html?method=createForm&successRedirect=https%3A%2F%2Fopendata.socrata.com%2Fdataset%2FSubmitReport%2Fjraf-t6d8%2Fform_success&errorRedirect=https%3A%2F%2Fopendata.socrata.com%2Fdataset%2FSubmitReport%2Fjraf-t6d8%2Fform_error";
+
 @interface ESSocrataAdapterTests : XCTestCase
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
@@ -24,7 +26,11 @@
 - (void)setUp {
     [super setUp];
     
-    self.socrataAdapter = [ESSocrataAdapter new];
+    NSURL *url = [NSURL URLWithString:ESSocrataFormURLString];
+    
+    XCTAssertNotNil(url, @"URL should not be nil.");
+    
+    self.socrataAdapter = [[ESSocrataAdapter alloc] initWithURL:url];
 }
 
 - (void)tearDown {
@@ -45,20 +51,22 @@
     
     XCTestExpectation *expectCompletionBlockToBeCalled = [self expectationWithDescription:@"Completion block should be called."];
     
-    [self.socrataAdapter submitReport:report completionBlock:^(NSError *error) {
-        XCTAssertNil(error,
-                     @"Error submitting report: %@",
-                     error.localizedDescription);
-        
-        [expectCompletionBlockToBeCalled fulfill];
-    }];
+    [self.socrataAdapter submitReport:report
+                      completionBlock:^(NSURLResponse *response,
+                                        NSData *data,
+                                        NSError *error) {
+                          XCTAssertNil(error,
+                                       @"Error submitting report: %@",
+                                       error.localizedDescription);
+                          
+                          [expectCompletionBlockToBeCalled fulfill];
+                      }];
     
     [self waitForExpectationsWithTimeout:120.0
                                  handler:NULL];
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
+- (void)testSubmittingReportPerformance {
     [self measureBlock:^{
         [self testSubmittingReport];
     }];

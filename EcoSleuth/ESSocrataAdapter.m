@@ -53,10 +53,12 @@
                                                                                               URLString:self.URL.absoluteString
                                                                                              parameters:dictionary
                                                                               constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                                                                  [formData appendPartWithFileData:imageData
-                                                                                                              name:@"image"
-                                                                                                          fileName:@"image.jpg"
-                                                                                                          mimeType:@"image/jpeg"];
+                                                                                  if (imageData != nil) {
+                                                                                      [formData appendPartWithFileData:imageData
+                                                                                                                  name:@"image"
+                                                                                                              fileName:@"image.jpg"
+                                                                                                              mimeType:@"image/jpeg"];
+                                                                                  }
                                                                               }
                                                                                                   error:nil];
     
