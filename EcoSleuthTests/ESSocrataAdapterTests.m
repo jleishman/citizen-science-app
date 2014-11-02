@@ -62,7 +62,7 @@ NSString * const ESSocrataFormURLString = @"https://opendata.socrata.com/views/j
                           [expectCompletionBlockToBeCalled fulfill];
                       }];
     
-    [self waitForExpectationsWithTimeout:120.0
+    [self waitForExpectationsWithTimeout:240.0
                                  handler:NULL];
 }
 

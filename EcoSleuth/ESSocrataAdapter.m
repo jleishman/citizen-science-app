@@ -63,18 +63,18 @@
                                                                                                   error:nil];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
+    manager.responseSerializer = [AFHTTPResponseSerializer new];
     NSProgress *progress = nil;
     
     NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request
                                                                        progress:&progress
-                                                              completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        } else {
-            NSLog(@"%@ %@", response, responseObject);
-        }
-    }];
+                                                              completionHandler:^(NSURLResponse *response,
+                                                                                  id responseObject,
+                                                                                  NSError *error) {
+                                                                  if (completionBlock != NULL) {
+                                                                      completionBlock(response, responseObject, error);
+                                                                  }
+                                                              }];
     
     [uploadTask resume];
 }
